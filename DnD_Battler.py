@@ -1,3 +1,5 @@
+#######OLD VERSION!! Moved to [its own repository](https://github.com/matteoferla/DnD-battler)
+
 __author__ = "Matteo"
 __copyright__ = "Don't blame me for a TPK"
 __email__ = "matteo.ferla@gmail.com"
