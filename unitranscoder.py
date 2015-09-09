@@ -46,6 +46,13 @@ def greekify(text):
     return text
 
 def uniencodemunger(text): #This will munge your code.
+    '''and       del       from      not       while
+as        elif      global    or        with
+assert    else      if        pass      yield
+break     except    import    print
+class     exec      in        raise
+continue  finally   is        return
+def       for       lambda    try'''
     toxicode={'lambda':'Λ',
               'sum':'Σ',
               'Math.sqrt':'√',
@@ -53,10 +60,18 @@ def uniencodemunger(text): #This will munge your code.
               '<=':'≤','=<':'≤',
               'isinstance':'⊂',
               'None':'∅',
-              'if ':'⇒ ', ##odd choice.
-              'def ':'∃ ' ##odd choice.
+              'if ':'⇒ ', ##odd choice. Messes up elif else. looks odd
+              'def ':'∃ ', ##odd choice. The matlab fx ligature is not unicode.
+              'for ':'∀ ',
+              ' and ':' ∧ ',
+              ' or ':' ∨ ',
+              ' not ':' ¬ ',
+              '#':'☞'
                }
-    funcode={}
+    #attributes in subscript.
+    #emoji
+    #+= and co.
+    text=re.sub('__(.*?)__',r'｢\1｣',text)  #thought it'd be funny
     text=text.replace('===','≣').replace('==','≡').replace('!=','≢')
     for glyph in toxicode:
         text=text.replace(glyph, toxicode[glyph])
